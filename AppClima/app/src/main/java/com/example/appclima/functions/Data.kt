@@ -1,6 +1,6 @@
 package com.example.appclima.functions
 
-import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.format.TextStyle
 import java.util.Locale
 
@@ -9,14 +9,14 @@ class DateUtil {
         private val locale = Locale("pt", "BR")
 
         fun getCurrentDayOfWeek(): String {
-            val currentDate = LocalDate.now()
-            val dayOfWeek = currentDate.dayOfWeek
+            val currentDateTime = LocalDateTime.now()
+            val dayOfWeek = currentDateTime.dayOfWeek
             return dayOfWeek.getDisplayName(TextStyle.FULL, locale) // Use o locale definido
         }
 
         fun getCurrentDayOfMonth(): Int {
-            val currentDate = LocalDate.now()
-            return currentDate.dayOfMonth
+            val currentDateTime = LocalDateTime.now()
+            return currentDateTime.dayOfMonth
         }
 
         fun getFormattedDate(): String {
@@ -25,7 +25,7 @@ class DateUtil {
             return "$dayOfWeek, $dayOfMonth"
         }
 
-        fun getNextDaysOfWeek(startDate: LocalDate, numberOfDays: Int): List<String> {
+        fun getNextDaysOfWeek(startDate: LocalDateTime, numberOfDays: Int): List<String> {
             val days = mutableListOf<String>()
             var currentDate = startDate
             for (i in 0 until numberOfDays) {
@@ -34,6 +34,16 @@ class DateUtil {
                 days.add(dayOfWeek.getDisplayName(TextStyle.FULL, locale))
             }
             return days
+        }
+
+        fun getMensagemEntrada(): String {
+            val currentDateTime = LocalDateTime.now()
+            val hour = currentDateTime.hour
+            return when {
+                hour in 0..11 -> "Bom dia"
+                hour in 12..17 -> "Boa tarde"
+                else -> "Boa noite"
+            }
         }
     }
 }

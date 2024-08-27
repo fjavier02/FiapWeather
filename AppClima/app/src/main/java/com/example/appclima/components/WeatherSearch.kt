@@ -41,12 +41,12 @@ fun WeatherAppHome() {
     var city by remember {
         mutableStateOf("")
     }
-    
+
     var tempAtual by remember {
         mutableStateOf("")
     }
 
-
+    Spacer(modifier = Modifier.height(5.dp))
     Column( // <-- Coluna com row que possui uma caixa de texto e um botão de pesquisa
         modifier = Modifier
             .fillMaxSize()
@@ -80,7 +80,7 @@ fun WeatherAppHome() {
             }
 
         }
-        Column { // <-- Column com os cards das cidades
+        Column {
             Spacer(modifier = Modifier.height(20.dp))
             Card( //  <-- Card com local e infos básicas. Precisa transformar os cards em botões.
                 modifier = Modifier
