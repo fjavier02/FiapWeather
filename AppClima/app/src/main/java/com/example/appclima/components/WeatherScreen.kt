@@ -141,18 +141,32 @@ fun WeatherScreen(modifier: Modifier = Modifier) {
                             Row (modifier = Modifier.padding(top = 50.dp),
                                 horizontalArrangement = Arrangement.spacedBy(40.dp)
                             ){
-                                Card() {
-                                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                        //UMIDADE
-                                        Image(painter = painterResource(id = R.drawable.humidity),
+                                Card(
+                                    modifier = Modifier.width(90.dp),
+
+                                    // Alinhamento central no Card
+                                ) {
+                                    Column(
+                                        modifier = Modifier.fillMaxWidth(), // Preenche a largura do Card
+                                        horizontalAlignment = Alignment.CenterHorizontally, // Centraliza horizontalmente
+                                        verticalArrangement = Arrangement.Center // Centraliza verticalmente
+                                    ) {
+                                        // UMIDADE
+                                        Image(
+                                            painter = painterResource(id = R.drawable.humidity),
                                             contentDescription = "umidade",
-                                            Modifier.size(70.dp))
+                                            Modifier.size(70.dp)
+                                        )
                                         Text(text = "%")
                                     }
                                 }
 
-                                Card {
-                                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                Card(modifier = Modifier.width(90.dp)) {
+                                    Column(
+                                        modifier = Modifier.fillMaxWidth(), // Preenche a largura do Card
+                                        horizontalAlignment = Alignment.CenterHorizontally, // Centraliza horizontalmente
+                                        verticalArrangement = Arrangement.Center // Centraliza verticalmente
+                                    ) {
                                         Image(painter = painterResource(id = R.drawable.mist),
                                             contentDescription = "",
                                             Modifier.size(50.dp))
@@ -162,8 +176,12 @@ fun WeatherScreen(modifier: Modifier = Modifier) {
                                             textAlign = TextAlign.Center)
                                     }
                                 }
-                                Card {
-                                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                Card(modifier = Modifier.width(90.dp)) {
+                                    Column(
+                                        modifier = Modifier.fillMaxWidth(), // Preenche a largura do Card
+                                        horizontalAlignment = Alignment.CenterHorizontally, // Centraliza horizontalmente
+                                        verticalArrangement = Arrangement.Center // Centraliza verticalmente
+                                    ) {
                                         Image(painter = painterResource(id = R.drawable.rain),
                                             contentDescription ="chuva",
                                             Modifier.size(50.dp))
@@ -173,6 +191,7 @@ fun WeatherScreen(modifier: Modifier = Modifier) {
                                             textAlign = TextAlign.Center)
                                     }
                                 }
+
                             }
                             Text(text = "Previsão para os proximos dias:",
                                 modifier = Modifier.padding(top = 30.dp), fontSize = 24.sp)

@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
@@ -46,7 +48,14 @@ fun WeatherAppHome() {
         mutableStateOf("")
     }
 
-
+    Column {
+        Text(
+            text = "Tempo", //<-- Trocar a String pela variável que recebe o valor da API
+            modifier = Modifier
+                .padding(start = 20.dp, top = 65.dp),
+            fontSize = 40.sp
+        )
+    }
     Column( // <-- Coluna com row que possui uma caixa de texto e um botão de pesquisa
         modifier = Modifier
             .fillMaxSize()
@@ -56,7 +65,8 @@ fun WeatherAppHome() {
         Row( // <-- row com caixa de texto e botão de pesquisa
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(8.dp),
+                .padding(8.dp, top = 80.dp)
+                .height(100.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceEvenly
 
@@ -81,12 +91,11 @@ fun WeatherAppHome() {
 
         }
         Column { // <-- Column com os cards das cidades
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(10.dp))
             Card( //  <-- Card com local e infos básicas. Precisa transformar os cards em botões.
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(100.dp),
-                colors = CardDefaults.cardColors(containerColor = Color(0xff329F6B)),
                 elevation = CardDefaults.cardElevation(4.dp),
                 content = {
                     Row(
@@ -96,17 +105,22 @@ fun WeatherAppHome() {
                         Text(
                             text = "São Paulo", //<-- Trocar a String pela variável que recebe o valor da API
                             modifier = Modifier
-                                .padding(top = 30.dp, bottom = 30.dp, start = 20.dp),
+                                .padding(top = 30.dp, bottom = 10.dp, start = 20.dp)
+                                .weight(1f),
                             fontSize = 25.sp
                         )
                         Image( // <-- Criar a lógica que seleciona o ícone em função da temperatura fornecida pela API
-                            painter = painterResource(id = R.drawable.cloud),
-                            contentDescription = "Ícone de dia nublado",
-                            modifier = Modifier.offset(x = 50.dp)
+                            painter = painterResource(id = R.drawable.clear),
+                            contentDescription = "Ícone de dia ensolarado",
+                            modifier = Modifier
+                                .offset(x = 10.dp)
+                                .size(100.dp),
                         )
                         Text(
                             text = "21°C", //<-- Trocar a String pela variável que recebe o valor da API
-                            modifier = Modifier.padding(top = 30.dp, bottom = 30.dp, start = 70.dp),
+                            modifier = Modifier
+                                .padding(top = 30.dp, bottom = 30.dp, end = 10.dp, start = 20.dp)
+                                .width(60.dp),
                             fontSize = 25.sp
                         )
                     }
@@ -119,7 +133,6 @@ fun WeatherAppHome() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(100.dp),
-                colors = CardDefaults.cardColors(containerColor = Color(0xff329F6B)),
                 elevation = CardDefaults.cardElevation(4.dp),
                 content = {
                     Row(
@@ -129,17 +142,22 @@ fun WeatherAppHome() {
                         Text(
                             text = "Belo Horizonte", //<-- Trocar a String pela variável que recebe o valor da API
                             modifier = Modifier
-                                .padding(top = 30.dp, bottom = 30.dp, start = 20.dp),
+                                .padding(top = 30.dp, bottom = 10.dp, start = 20.dp)
+                                .weight(1f),
                             fontSize = 25.sp
                         )
                         Image( // <-- Criar a lógica que seleciona o ícone em função da temperatura fornecida pela API
-                            painter = painterResource(id = R.drawable.cloud),
+                            painter = painterResource(id = R.drawable.rain),
                             contentDescription = "Ícone de dia nublado",
-                            modifier = Modifier.offset(x = 18.dp)
+                            modifier = Modifier
+                                .offset(x = 10.dp)
+                                .size(100.dp),
                         )
                         Text(
                             text = "23°C", //<-- Trocar a String pela variável que recebe o valor da API
-                            modifier = Modifier.padding(top = 30.dp, bottom = 30.dp, start = 20.dp),
+                            modifier = Modifier
+                                .padding(top = 30.dp, bottom = 30.dp, end = 10.dp, start = 20.dp)
+                                .width(60.dp),
                             fontSize = 25.sp
                         )
                     }
