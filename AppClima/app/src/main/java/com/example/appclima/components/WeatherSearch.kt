@@ -43,7 +43,7 @@ fun WeatherAppHome() {
     var city by remember {
         mutableStateOf("")
     }
-    
+
     var tempAtual by remember {
         mutableStateOf("")
     }
